@@ -1,6 +1,7 @@
 # /ai_news
 
-View 100% GPT3 generated articles based on news and opinion based prompts.
+View 100% GPT3 generated articles based on news and opinion based prompts.\
+*This project was originally coded in <1 day.*
 
 ## Installation
 

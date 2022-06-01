@@ -8,7 +8,7 @@ export default function ArticleComponent({article, index}) {
     const api = popover.connect(state, send)
 
     return (
-        <div key={index} className="relative w-screen h-screen p-6 sec">
+        <div key={index} className="relative min-h-screen lg:h-screen p-6 sec">
           <div className="absolute flex gap-4 text-white font-bold text-xl font-space">
             <small className="flicker">
               Generated on {article.created_at}
@@ -29,8 +29,8 @@ export default function ArticleComponent({article, index}) {
             </div>
           </div>
           <div className="mt-28 flex flex-col items-center">
-            <h2 className="text-white font-bold text-4xl font-space text-center">&quot;{article.title}&quot;</h2>
-            <p className="mt-12 text-neutral-500 tracking-tight text-lg text-justify w-1/2">{article.content}</p>
+            <h2 className="text-white font-bold text-3xl lg:text-4xl font-space text-center">&quot;{article.title}&quot;</h2>
+            <p className="mt-12 text-neutral-500 tracking-tight text-lg text-justify lg:w-1/2 overflow-hidden">{article.content}</p>
           </div>
         </div>
     )

@@ -31,12 +31,12 @@ export default function Index() {
 
 
   return (
-    <main className="overflow-x-hidden divide-y con">
+    <main className="overflow-x-hidden divide-y con px-4 lg:px-0">
       <motion.div
       animate={{ opacity: [0, 1] }}
       transition={{ duration: 0.5 }}
       className="w-screen h-screen flex flex-col justify-center items-center sec">
-        <h1 className="text-white font-bold text-6xl font-space text-center mb-2">AI GENERATED NEWS</h1>
+        <h1 className="text-white font-bold text-5xl lg:text-6xl font-space text-center mb-2">AI GENERATED NEWS</h1>
         <h3 className="text-neutral-500 text-lg font-space text-center mb-12">A collection of 212 randomly generated articles</h3>
         <motion.div
         animate={{ y: [0, 20, 0] }}
