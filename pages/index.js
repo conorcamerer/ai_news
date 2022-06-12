@@ -11,13 +11,12 @@ const supabase = createClient(
 
 
 
-const Block = ({ inViewport, forwardedRef }) => {
-  const text = inViewport ? 'In viewport' : 'Not in viewport'
+const Block = ({ forwardedRef }) => {
   return (
     <div ref={forwardedRef} className="relative w-screen h-screen p-6 sec">
       <div className="absolute flex gap-4 text-neutral-700 font-bold text-xl font-space">
         <small className="flicker">
-          Generated{ text } on&nbsp;<div className="inline-block bg-neutral-900 rounded animate-pulse w-32">&nbsp;</div>
+          Generated on&nbsp;<div className="inline-block bg-neutral-900 rounded animate-pulse w-32">&nbsp;</div>
           <br/>
           _ref:&nbsp;<div className="inline-block bg-neutral-900 rounded animate-pulse w-14">&nbsp;</div>
         </small>
@@ -36,11 +35,16 @@ export default function Index() {
   const [articles, setArticles] = useState([])
 
   async function getArticle() {
-    console.log('loading data')
+    console.log('%cLoading 1 article', 'color:#f4a261')
+    Math.floor(Math.random() * 4)
+    //const { data, error } = await supabase.rpc('ts_2r2')
+    const { data, error } = await supabase
+      .from('articles')
+      .select()
+      .match({id: Math.floor(Math.random() * 11) + 1})
 
-    const { data, error } = await supabase.rpc('ts_2r2')
-    setArticles([...articles, data])
-    console.log(articles)
+    setArticles([...articles, data[0]])
+    console.log('%cLoaded article #'+data[0].id, 'color:#fb8500')
   }
 
 
@@ -64,7 +68,7 @@ export default function Index() {
         <Article key={index} article={article} index={index} />
       ))}
 
-      <ViewportBlock onEnterViewport={() => getArticle()} onLeaveViewport={() => console.log('loaded data')} />
+      <ViewportBlock onEnterViewport={() => getArticle()} />
 
     </main>
   )
